@@ -11,7 +11,7 @@ var count = 0;
 			chrome.storage.sync.get({storedLines: []}, function(result) {
 				var storedLines = result.storedLines;
 
-				storedLines.push({sel: sel, HasBeenUploadedYet: false});
+				storedLines.push({selection: sel});
 	        	chrome.storage.sync.set({storedLines: storedLines}, function () {
         			// you can use strings instead of objects
         			// if you don't  want to define default values
