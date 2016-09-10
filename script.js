@@ -1,30 +1,30 @@
 var highlightArray = [];
-var count = 0
+var count = 0;
 
-document.addEventListener('mouseup',function(event)
-{
-	var sel = window.getSelection().toString();
+ window.onkeypress = function(event) {
+ 	if (event.keyCode == 115 || event.keyCode == 83) {
+
+
+		var sel = window.getSelection().toString();
+		
+		if(sel.length) {
+			chrome.storage.sync.get({storedLines: []}, function(result) {
+				var storedLines = result.storedLines;
+
+				storedLines.push({sel: sel, HasBeenUploadedYet: false});
+	        	chrome.storage.sync.set({storedLines: storedLines}, function () {
+        			// you can use strings instead of objects
+        			// if you don't  want to define default values
+        			// chrome.storage.sync.get('storedLines', function (result) {
+           //  			console.log(result.storedLines)
+        			// });
+    			});
+
+    		});
+
+	    };
+
+	    };
 	
-	if(sel.length) {
-        chrome.storage.sync.set({'value': sel}, function() {
-        	console.log('Saved')
-    	});
-
-
-        chrome.storage.sync.get(['value'], function(result) {
-			highlightArray.unshift(result);
-			count++;
-			var newLine = highlightArray[0];
-			window.console.log(newLine);
-			
-			for (i = 0; i < count; i++) {
-				window.console.log(highlightArray[i]);	
-			}
-			
-		});
-        
-        //chrome.extension.sendRequest({'message':'setText','data': sel},function(response){})
-    }
-
-})
+};
 
