@@ -1,29 +1,33 @@
 // Add bubble to the top of the page.
-var bubbleDOM = document.createElement('div');
-bubbleDOM.setAttribute('class', 'selection_bubble');
-bubbleDOM.setAttribute('onClick', 'myFunction()');
-document.body.appendChild(bubbleDOM);
+var bubbleDOMdiv = document.createElement('div');
+bubbleDOMdiv.setAttribute('class', 'popup');
+var bubbleDOMspan = document.createElement('span');
+bubbleDOMspan.setAttribute('class', 'popuptext');
+bubbleDOMspan.setAttribute('id', 'myPopup');
+bubbleDOMspan.innerHTML = 'hellooooo';
+bubbleDOMdiv.appendChild(bubbleDOMspan);
+document.body.appendChild(bubbleDOMdiv);
+
+alert(0);
 
 // Lets listen to mouseup DOM events.
 document.addEventListener('mouseup', function (e) {
   var selection = window.getSelection().toString();
   if (selection.length > 0) {
-    renderBubble(e.clientX, e.clientY, selection);
+    renderBubble();
   }
 }, false);
 
 
 // Close the bubble when we click on the screen.
-document.addEventListener('mousedown', function (e) {
-  bubbleDOM.style.visibility = 'hidden';
-}, false);
+//document.addEventListener('mousedown', function (e) {
+//  bubbleDOM.style.visibility = 'hidden';
+//}, false);
 
 // Move that bubble to the appropriate location.
-function renderBubble(mouseX, mouseY, selection) {
-  bubbleDOM.innerHTML = "asdfasdl;fkjasdl;fkjas;";
-  bubbleDOM.style.top = mouseY + 'px';
-  bubbleDOM.style.left = mouseX + 'px';
-  bubbleDOM.style.visibility = 'visible';
+function renderBubble() {
+	var popup = document.getElementById('myPopup');
+	popup.classList.toggle('show');
 };
 
 function myFunction() {
