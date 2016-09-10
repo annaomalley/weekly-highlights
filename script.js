@@ -1,5 +1,9 @@
 document.addEventListener('mouseup',function(event)
 {
-    alert(0);
+	var sel = window.getSelection().toString();
+
+    if(sel.length)
+        //chrome.extension.sendRequest({'message':'setText','data': sel},function(response){})
+
 })
 
