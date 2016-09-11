@@ -27,7 +27,7 @@ $.notify.addStyle('saveButtonStyle', {
 
 document.addEventListener('mousedown', function (e)  {
 	console.log('event triggered...');
-	$('*[class^="notify"]').trigger('notify-hide');
+	$.notifyjs-saveButtonStyle-base.trigger('notify-hide');
 }, false);
 
 
