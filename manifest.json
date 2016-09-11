@@ -21,6 +21,8 @@
     "activeTab",
     "https://ajax.googleapis.com/",
     "storage"
-  ]
+  ],
+
+  "options_page": "options.html"
 }
 
