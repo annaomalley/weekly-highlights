@@ -1,5 +1,5 @@
-var selection;
-console.log(selection);
+var selection = '';
+var penultimateSelection = '';
 
 $.notify.addStyle('saveButtonStyle', {
   html: "<div id='saveButton'>\n<span data-notify-text/></span>\n</div>",
@@ -25,19 +25,26 @@ $.notify.addStyle('saveButtonStyle', {
   }
 });
 
-document.addEventListener('mousedown', function (e) ) {
-	$(this).trigger('notify-hide');
+document.addEventListener('mousedown', function (e)  {
+	console.log('event triggered...');
+	$('*[class^="notify"]').trigger('notify-hide');
 }, false);
 
 
 
 document.addEventListener('mouseup', function (e) {
-  click = window.getSelection().toString();
-  if (click.length > 0) {
+  var click = window.getSelection().toString();
+  console.log('mouseup: ' + click);
+  if (click.length > 0 && click!= selection && click!=penultimateSelection) {
+  	penultimateSelection = selection;
   	selection = click;
     $.notify('Save to Weekly Highlights', {
   		style: 'saveButtonStyle'
 	});
+  }
+  else {
+  	penultimateSelection = selection;
+  	selection = '';
   }
 }, false);
 
